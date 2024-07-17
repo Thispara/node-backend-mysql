@@ -72,7 +72,12 @@ const main = async () => {
     const sql = 'SELECT * FROM products';
     try {
       const [results] = await db.query(sql);
-      res.json(results);
+      // Convert base64 images to binary
+      const products = results.map(product => ({
+        ...product,
+        prod_img: Buffer.from(product.prod_img, 'base64').toString('binary')
+      }));
+      res.json(products);
     } catch (error) {
       console.error('Error fetching products:', error);
       res.status(500).json({ error: 'Failed to fetch products' });
