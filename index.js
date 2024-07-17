@@ -1,16 +1,16 @@
 const express = require('express');
 const cors = require('cors');
-const mysql = require('mysql2/promise'); // Use promise-based mysql2
+const mysql = require('mysql2/promise'); 
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const dotenv = require('dotenv');
 
-// Load environment variables from .env file
+
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3001; // Use port from .env or default to 3001
+const port = process.env.PORT || 3000; 
 
 // Middleware
 app.use(cors());
